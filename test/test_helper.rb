@@ -5,4 +5,4 @@ end
 
 require 'minitest/autorun'
 require 'minitest/pride'
-require './lib/modules/enigma'
+require './lib/enigma'

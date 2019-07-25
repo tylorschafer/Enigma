@@ -1,6 +1,4 @@
-require 'minitest/autorun'
-require 'minitest/pride'
-require './lib/enigma'
+require_relative 'test_helper'
 
 class EnigmaTest < Minitest::Test
 
