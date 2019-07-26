@@ -6,7 +6,7 @@ class EnigmaTest < Minitest::Test
     @enigma = Enigma.new
   end
 
-  def test_it_exsits
+  def test_it_exsists
     assert_instance_of Enigma, @enigma
   end
 
