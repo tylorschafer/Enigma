@@ -6,7 +6,7 @@ class OffsetTest < Minitest::Test
     @offset = Offset.new
   end
 
-  def test_it_exsists
+  def test_it_exists
     assert_instance_of Offset, @offset
   end
 

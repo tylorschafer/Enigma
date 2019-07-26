@@ -6,7 +6,7 @@ class KeyTest < Minitest::Test
     @key = Key.new
   end
 
-  def test_it_exsists
+  def test_it_exists
     assert_instance_of Key, @key
   end
 

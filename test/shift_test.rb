@@ -6,7 +6,7 @@ class ShiftTest < Minitest::Test
       @shift = Shift.new
   end
 
-  def test_it_exsists
+  def test_it_exists
     assert_instance_of Shift, @shift
   end
 
