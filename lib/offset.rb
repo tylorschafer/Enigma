@@ -9,7 +9,7 @@ class Offset
     current_date = Time.now.strftime("%m%d%y")
   end
 
-  def square_date
-    
+  def square_date(inputed_date)
+    inputed_date.to_i**2
   end
 end
