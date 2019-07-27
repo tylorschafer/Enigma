@@ -17,4 +17,7 @@ class KeyTest < Minitest::Test
     assert_equal "04876", @key.user_key
   end
 
+  def test_key_shifts_starts_empty_hash
+    assert_equal ({}), @key.key_shifts
+  end
 end
