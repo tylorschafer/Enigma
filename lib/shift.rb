@@ -1,7 +1,7 @@
 class Shift
   attr_reader :collected_shifts, :key_shifts, :offset_shifts
 
-  def initialize(key = Key.new.generate_key, offset = Offset.new.get_date)
+  def initialize(key = Key.new.random_key, offset = Offset.new.get_date)
     @collected_shifts = Hash.new(0)
     @key_shifts = Key.new(key).create_key_subshifts
     @offset_shifts = Offset.new(offset).create_offset_subshifts

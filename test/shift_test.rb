@@ -4,6 +4,7 @@ class ShiftTest < Minitest::Test
 
   def setup
       @shift = Shift.new("01234", "062719")
+      @sample_shift = Shift.new
   end
 
   def test_it_exists
