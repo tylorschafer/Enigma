@@ -3,7 +3,7 @@ require_relative 'test_helper'
 class EnigmaTest < Minitest::Test
 
   def setup
-    @enigma = Enigma.new("Hello There!", "01234", "062719")
+    @enigma = Enigma.new
   end
 
   def test_it_exists
@@ -11,13 +11,7 @@ class EnigmaTest < Minitest::Test
   end
 
   def test_attributes
-    expected_merged_hash = {
-      :a => 3,
-      :b => 21,
-      :c => 29,
-      :d => 35
-    }
-    expected_character_set =
+    expected =
      ["a", "b", "c", "d",
       "e", "f", "g", "h",
       "i", "j", "k", "l",
@@ -25,12 +19,44 @@ class EnigmaTest < Minitest::Test
       "q", "r", "s", "t",
       "u", "v", "w", "x",
       "y", "z", " "]
+    assert_equal expected, @enigma.character_set
+  end
 
-    assert_equal "Hello There!", @enigma.message
-    assert_equal "01234", @enigma.key
-    assert_equal "062719", @enigma.offset
-    assert_equal expected_merged_hash, @enigma.shifts
-    assert_equal expected_character_set, @enigma.character_set
+  def test_get_shifts
+    expected = {
+      :a => 3,
+      :b => 21,
+      :c => 29,
+      :d => 35
+    }
+    assert_equal expected, @enigma.get_shifts("01234", "062719")
+  end
+
+  def test_find_index
+    assert_equal 0, @enigma.find_index("a")
+    assert_equal 26, @enigma.find_index(" ")
+  end
+
+  def test_rotated_set
+    expected =
+      ["d", "e", "f", "g",
+       "h", "i", "j", "k",
+       "l", "m", "n", "o",
+       "p", "q", "r", "s",
+       "t", "u", "v", "w",
+       "x", "y", "z", " ",
+       "a", "b", "c"]
+
+    assert_equal expected, @enigma.rotated_set("01234", "062719", 0)
+  end
+
+  def test_encrypt
+    expected = {
+      :encryption=>"keder ohulw",
+      :key=> "02715",
+      :date=> "040895"
+    }
+    assert_equal expected, @enigma.encrypt("hello world", "02715", "040895")
   end
 
 end
