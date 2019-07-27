@@ -47,7 +47,17 @@ class EnigmaTest < Minitest::Test
        "x", "y", "z", " ",
        "a", "b", "c"]
 
+    expected_2 =
+      ["y", "z", " ", "a",
+       "b", "c", "d", "e",
+       "f", "g", "h", "i",
+       "j", "k", "l", "m",
+       "n", "o", "p", "q",
+       "r", "s", "t", "u",
+       "v", "w", "x"]
+
     assert_equal expected, @enigma.rotated_set("01234", "062719", 0)
+    assert_equal expected_2, @enigma.rotated_set(-1, "01234", "062719", 0)
   end
 
   def test_encrypt_hash
@@ -98,5 +108,4 @@ class EnigmaTest < Minitest::Test
     assert_equal expected, @enigma.decrypt("keder ohulw", "02715", "040895")
     assert_equal expected_2, @enigma.decrypt("keder ohulw!", "02715", "040895")
   end
-
 end
