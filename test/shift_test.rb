@@ -14,4 +14,8 @@ class ShiftTest < Minitest::Test
     assert_equal ({}), @shift.collected_shifts
   end
 
+  def test_random_key
+
+  end
+
 end
