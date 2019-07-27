@@ -1,15 +1,21 @@
 class Enigma
-  attr_reader :message, :key, :offset, :character_set, :shifts
+  attr_reader :character_set
 
-  def initialize(message, key = Key.new.random_key, offset = Offset.new.get_date)
-    @message = message
-    @key = key
-    @offset = offset
+  def initialize
+    @key = Key.new.random_key
+    @offset = Offset.new.get_date
     @character_set = generate_character_set
-    @shifts = Shift.new(key, offset).merge_subshifts
   end
 
   def generate_character_set
     ("a".."z").to_a << " "
+  end
+
+  def get_shifts(key, offset)
+    Shift.new(key, offset).merge_subshifts
+  end
+
+  def encrypt(message = @message, key = @key, date = @offset)
+
   end
 end
