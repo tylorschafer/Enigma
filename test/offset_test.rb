@@ -4,7 +4,7 @@ class OffsetTest < Minitest::Test
 
   def setup
     @offset = Offset.new
-    @stubbed_offset = mock()
+    @stubbed_offset = mock
     @stubbed_offset.stubs(:get_date).returns("062619")
   end
 
