@@ -10,24 +10,20 @@ class Enigma
   end
 
   def encrypt_hash(key, date)
-    decrypted_output = {
-      :encryption => "",
+    {:encryption => "",
       :key => key,
-      :date => date
-    }
+      :date => date}
   end
 
   def decrypt_hash(key, date)
-    decrypted_output = {
-      :decryption => "",
+    {:decryption => "",
       :key => key,
-      :date => date
-    }
+      :date => date}
   end
 
-  def encrypt(message = @message, key = @key, date = @offset)
+  def encrypt(message, key = @key, date = @offset)
     encrypted_output = encrypt_hash(key, date)
-    message.chars.each_with_index do |char, index|
+    message.downcase.chomp.chars.each_with_index do |char, index|
       if @character_set.include?(char)
         new_char = rotated_set(key, date, index)[find_index(char)]
         encrypted_output[:encryption] << new_char
@@ -38,9 +34,9 @@ class Enigma
     encrypted_output
   end
 
-  def decrypt(message = @message, key = @key, date = @offset)
+  def decrypt(message, key = @key, date = @offset)
     decrypted_output = decrypt_hash(key, date)
-    message.chars.each_with_index do |char, index|
+    message.downcase.chars.each_with_index do |char, index|
       if @character_set.include?(char)
         new_char = rotated_set(-1, key, date, index)[find_index(char)]
         decrypted_output[:decryption] << new_char

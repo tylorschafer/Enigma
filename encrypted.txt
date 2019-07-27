@@ -1,0 +1,1 @@
+{:encryption=>"miyapbtdb kymqttefl jblsydy", :key=>"76953", :date=>"072719"}

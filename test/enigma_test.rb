@@ -91,7 +91,6 @@ class EnigmaTest < Minitest::Test
     }
     assert_equal expected, @enigma.encrypt("hello world", "02715", "040895")
     assert_equal expected_2, @enigma.encrypt("hello world!", "02715", "040895")
-    assert_equal "", @enigma.encrypt("this is so cool")
   end
 
   def test_decrypt
