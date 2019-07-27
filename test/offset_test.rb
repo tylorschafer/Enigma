@@ -3,7 +3,7 @@ require_relative 'test_helper'
 class OffsetTest < Minitest::Test
 
   def setup
-    @offset = Offset.new
+    @offset = Offset.new("062719")
     @stubbed_offset = mock
     @stubbed_offset.stubs(:get_date).returns("062619")
     @stubbed_offset.stubs(:square_date_offset).returns("9161")
@@ -23,15 +23,15 @@ class OffsetTest < Minitest::Test
   end
 
   def test_square_date_offset
-    assert_equal "7601" , @offset.square_date_offset("091199")
+    assert_equal "2961" , @offset.square_date_offset
     assert_equal "9161", @offset.square_date_offset(@stubbed_offset.get_date)
   end
 
   def test_create_offset_subshifts
     expected_1 = {
-      :a => 7,
-      :b => 6,
-      :c => 0,
+      :a => 2,
+      :b => 9,
+      :c => 6,
       :d => 1
     }
     expected_2 = {
@@ -40,7 +40,7 @@ class OffsetTest < Minitest::Test
       :c => 6,
       :d => 1
     }
-    assert_equal expected_1, @offset.create_offset_subshifts("7601")
+    assert_equal expected_1, @offset.create_offset_subshifts
     assert_equal expected_2, @offset.create_offset_subshifts(@stubbed_offset.square_date_offset)
   end
 end
