@@ -6,8 +6,12 @@ class ShiftTest < Minitest::Test
       @shift = Shift.new
   end
 
-  def test_it_exsists
+  def test_it_exists
     assert_instance_of Shift, @shift
+  end
+
+  def test_collected_shifts_starts_empty_hash
+    assert_equal ({}), @shift.collected_shifts
   end
 
 end

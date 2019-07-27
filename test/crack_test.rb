@@ -6,7 +6,7 @@ class CrackTest < Minitest::Test
     @crack = Crack.new
   end
 
-  def test_it_exsists
+  def test_it_exists
     assert_instance_of Crack, @crack
   end
 end

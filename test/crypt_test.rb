@@ -6,7 +6,7 @@ class CryptTest < Minitest::Test
     @crypt = Crypt.new
   end
 
-  def test_it_exsists
+  def test_it_exists
     assert_instance_of Crypt, @crypt
   end
 
