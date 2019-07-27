@@ -1,4 +1,6 @@
+require './modules/enigma_helpers'
 class Enigma
+  include EnigmaHelpers
   attr_reader :character_set
 
   def initialize
@@ -10,29 +12,11 @@ class Enigma
       :key => nil,
       :date => nil
     }
-  end
-
-  def generate_character_set
-    ("a".."z").to_a << " "
-  end
-
-  def get_shifts(key, offset)
-    Shift.new(key, offset).merge_subshifts
-  end
-
-  def find_index(char)
-    @character_set.index(char)
-  end
-
-  def rotated_set(key, offset, index)
-    return @character_set
-      .rotate(get_shifts(key,offset)[:a]) if index == 0 || index % 4 == 0
-    return @character_set
-      .rotate(get_shifts(key,offset)[:b]) if index == 1 || index % 4 == 1
-    return @character_set
-      .rotate(get_shifts(key,offset)[:c]) if index == 2 || index % 4 == 2
-    return @character_set
-      .rotate(get_shifts(key,offset)[:d]) if index == 3 || index % 4 == 3
+    @decrypt_output = {
+      :decryption => "",
+      :key => nil,
+      :date => nil
+    }
   end
 
   def encrypt(message = @message, key = @key, date = @offset)
@@ -43,5 +27,15 @@ class Enigma
       @encrypt_output[:date] = date
     end
     @encrypt_output
+  end
+
+  def decrypt(message = @message, key = @key, date = @offset)
+    message.chars.each_with_index do |char, index|
+      new_char = rotated_set(-1, key, date, index)[find_index(char)]
+      @decrypt_output[:decryption] << new_char
+      @decrypt_output[:key] = key
+      @decrypt_output[:date] = date
+    end
+    @decrypt_output
   end
 end
