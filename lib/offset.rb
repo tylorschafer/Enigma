@@ -5,5 +5,7 @@ class Offset
     @offset_shifts = Hash.new(0)
   end
 
-
+  def get_date
+    current_date = Time.now.strftime("%m%d%y")
+  end
 end

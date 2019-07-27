@@ -14,4 +14,9 @@ class OffsetTest < Minitest::Test
     assert_equal ({}), @offset.offset_shifts
   end
 
+  def test_get_date
+    assert_instance_of String, @offset.get_date
+    assert_equal 6, @offset.get_date.size
+  end
+
 end
