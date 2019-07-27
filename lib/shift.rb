@@ -13,5 +13,4 @@ class Shift
     end
     @collected_shifts
   end
-
 end

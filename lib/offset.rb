@@ -7,7 +7,7 @@ class Offset
   end
 
   def get_date
-    current_date = Time.now.strftime("%m%d%y")
+    Time.now.strftime("%m%d%y")
   end
 
   def square_date_offset(inputed_date = user_date)

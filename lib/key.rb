@@ -7,7 +7,7 @@ class Key
   end
 
   def random_key
-    random_key = rand(1..99999).to_s.rjust(5, "0")
+    rand(1..99999).to_s.rjust(5, "0")
   end
 
   def create_key_subshifts(key = user_key)
