@@ -10,4 +10,8 @@ class OffsetTest < Minitest::Test
     assert_instance_of Offset, @offset
   end
 
+  def test_offset_shifts_starts_empty_hash
+    assert_equal ({}), @offset.offset_shifts
+  end
+
 end
