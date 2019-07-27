@@ -23,16 +23,16 @@ class KeyTest < Minitest::Test
 
   def test_create_key_subshifts
     expected_1 = {
-      :a => "01",
-      :b => "12",
-      :c => "23",
-      :d => "34"
+      :a => 1,
+      :b => 12,
+      :c => 23,
+      :d => 34
     }
     expected_2 = {
-      :a => "56",
-      :b => "67",
-      :c => "72",
-      :d => "23"
+      :a => 56,
+      :b => 67,
+      :c => 72,
+      :d => 23
     }
     assert_equal expected_1, @key.create_key_subshifts("01234")
     assert_equal expected_2, @key.create_key_subshifts(@stubbed_key.random_key)

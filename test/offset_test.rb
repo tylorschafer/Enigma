@@ -21,9 +21,26 @@ class OffsetTest < Minitest::Test
     assert_equal 6, @offset.get_date.size
   end
 
-  def test_square_date
-    assert_equal 8317257601 , @offset.square_date("091199")
-    assert_equal 3921139161, @offset.square_date(@stubbed_offset.get_date)
+  def test_square_date_offset
+    assert_equal "7601" , @offset.square_date_offset("091199")
+    assert_equal "9161", @offset.square_date_offset(@stubbed_offset.get_date)
+  end
+
+  def test_create_offset_subshifts
+    expected_1 = {
+      :a => 7,
+      :b => 6,
+      :c => 0,
+      :d => 1
+    }
+    expected_2 = {
+      :a => 9,
+      :b => 1,
+      :c => 6,
+      :d => 1
+    }
+    assert_equal expected_1, @offset.create_offset_subshifts("7601")
+    assert_equal expected_2, @offset.create_offset_subshifts(@stubbed_offset.square_date_offset)
   end
 
 end
