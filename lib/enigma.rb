@@ -5,7 +5,7 @@ class Enigma
     @key = Key.new.random_key
     @offset = Offset.new.get_date
     @character_set = generate_character_set
-    @enrypt_output = {
+    @encrypt_output = {
       :encryption => "",
       :key => nil,
       :date => nil
@@ -24,21 +24,24 @@ class Enigma
     @character_set.index(char)
   end
 
-  def find_char(index)
-    @character_set[index]
-  end
-
   def rotated_set(key, offset, index)
-    return @character_set.rotate(get_shifts(key,offset)[:a]) if index == 0
-    return @character_set.rotate(get_shifts(key,offset)[:b]) if index == 1
-    return @character_set.rotate(get_shifts(key,offset)[:c]) if index == 2
-    return @character_set.rotate(get_shifts(key,offset)[:d]) if index == 3
+    return @character_set
+      .rotate(get_shifts(key,offset)[:a]) if index == 0 || index % 4 == 0
+    return @character_set
+      .rotate(get_shifts(key,offset)[:b]) if index == 1 || index % 4 == 1
+    return @character_set
+      .rotate(get_shifts(key,offset)[:c]) if index == 2 || index % 4 == 2
+    return @character_set
+      .rotate(get_shifts(key,offset)[:d]) if index == 3 || index % 4 == 3
   end
 
-  # def encrypt(message = @message, key = @key, date = @offset)
-  #   message.chars.each_with_index do |char, index|
-  #     rotated_set(index)
-  #     @encrypt_output[:encryption] <<
-  #   end
-  # end
+  def encrypt(message = @message, key = @key, date = @offset)
+    message.chars.each_with_index do |char, index|
+      new_char = rotated_set(key, date, index)[find_index(char)]
+      @encrypt_output[:encryption] << new_char
+      @encrypt_output[:key] = key
+      @encrypt_output[:date] = date
+    end
+    @encrypt_output
+  end
 end
