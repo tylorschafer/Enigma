@@ -7,35 +7,47 @@ class Enigma
     @key = Key.new.random_key
     @offset = Offset.new.get_date
     @character_set = generate_character_set
-    @encrypt_output = {
+  end
+
+  def encrypt_hash(key, date)
+    decrypted_output = {
       :encryption => "",
-      :key => nil,
-      :date => nil
+      :key => key,
+      :date => date
     }
-    @decrypt_output = {
+  end
+
+  def decrypt_hash(key, date)
+    decrypted_output = {
       :decryption => "",
-      :key => nil,
-      :date => nil
+      :key => key,
+      :date => date
     }
   end
 
   def encrypt(message = @message, key = @key, date = @offset)
+    encrypted_output = encrypt_hash(key, date)
     message.chars.each_with_index do |char, index|
-      new_char = rotated_set(key, date, index)[find_index(char)]
-      @encrypt_output[:encryption] << new_char
-      @encrypt_output[:key] = key
-      @encrypt_output[:date] = date
+      if @character_set.include?(char)
+        new_char = rotated_set(key, date, index)[find_index(char)]
+        encrypted_output[:encryption] << new_char
+      else
+        encrypted_output[:encryption] << char
+      end
     end
-    @encrypt_output
+    encrypted_output
   end
 
   def decrypt(message = @message, key = @key, date = @offset)
+    decrypted_output = decrypt_hash(key, date)
     message.chars.each_with_index do |char, index|
-      new_char = rotated_set(-1, key, date, index)[find_index(char)]
-      @decrypt_output[:decryption] << new_char
-      @decrypt_output[:key] = key
-      @decrypt_output[:date] = date
+      if @character_set.include?(char)
+        new_char = rotated_set(-1, key, date, index)[find_index(char)]
+        decrypted_output[:decryption] << new_char
+      else
+        decrypted_output[:decryption] << char
+      end
     end
-    @decrypt_output
+    decrypted_output
   end
 end
