@@ -13,8 +13,9 @@ class OffsetTest < Minitest::Test
     assert_instance_of Offset, @offset
   end
 
-  def test_offset_shifts_starts_empty_hash
+  def test_attributes
     assert_equal ({}), @offset.offset_shifts
+    assert_equal "062719", @offset.user_date
   end
 
   def test_get_date

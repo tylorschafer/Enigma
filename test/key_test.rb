@@ -12,8 +12,9 @@ class KeyTest < Minitest::Test
     assert_instance_of Key, @key
   end
 
-  def test_key_shifts_starts_empty_hash
+  def test_attributes
     assert_equal ({}), @key.key_shifts
+    assert_equal "01234", @key.user_key
   end
 
   def test_random_key
