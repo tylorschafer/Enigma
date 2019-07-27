@@ -6,6 +6,7 @@ class OffsetTest < Minitest::Test
     @offset = Offset.new
     @stubbed_offset = mock
     @stubbed_offset.stubs(:get_date).returns("062619")
+    @stubbed_offset.stubs(:square_date_offset).returns("9161")
   end
 
   def test_it_exists
@@ -42,5 +43,4 @@ class OffsetTest < Minitest::Test
     assert_equal expected_1, @offset.create_offset_subshifts("7601")
     assert_equal expected_2, @offset.create_offset_subshifts(@stubbed_offset.square_date_offset)
   end
-
 end
