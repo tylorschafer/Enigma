@@ -4,6 +4,7 @@ require './lib/offset'
 require './lib/shift'
 
 enigma = Enigma.new
-user_created = enigma.encrypt(File.read(ARGV[0]))
-File.write(ARGV[1], user_created)
-puts "Created #{ARGV[0]} with the key #{user_created[:key]} and date #{user_created[:date]}"
+encryptor = enigma.encrypt(File.read(ARGV[0]))
+File.write(ARGV[1], encryptor[:encryption])
+puts "Created #{ARGV[1]} with the key #{encryptor[:key]}
+      and date #{encryptor[:date]}"
