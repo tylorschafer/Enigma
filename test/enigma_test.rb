@@ -106,5 +106,6 @@ class EnigmaTest < Minitest::Test
     }
     assert_equal expected, @enigma.decrypt("keder ohulw", "02715", "040895")
     assert_equal expected_2, @enigma.decrypt("keder ohulw!", "02715", "040895")
+    assert_equal "", @enigma.decrypt("ijmqlchtyaznirhiag pfc huem", "14569", "072819")
   end
 end
