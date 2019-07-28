@@ -4,8 +4,6 @@ class KeyTest < Minitest::Test
 
   def setup
     @key = Key.new("01234")
-    @stubbed_key = mock
-    @stubbed_key.stubs(:random_key).returns("56723")
   end
 
   def test_it_exists
@@ -29,13 +27,6 @@ class KeyTest < Minitest::Test
       :c => 23,
       :d => 34
     }
-    expected_2 = {
-      :a => 56,
-      :b => 67,
-      :c => 72,
-      :d => 23
-    }
     assert_equal expected_1, @key.create_key_subshifts
-    assert_equal expected_2, @key.create_key_subshifts(@stubbed_key.random_key)
   end
 end

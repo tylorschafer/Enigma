@@ -3,8 +3,7 @@ require_relative 'test_helper'
 class ShiftTest < Minitest::Test
 
   def setup
-      @shift = Shift.new("01234", "062719")
-      @sample_shift = Shift.new
+    @shift = Shift.new("01234", "062719")
   end
 
   def test_it_exists
