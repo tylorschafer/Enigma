@@ -4,7 +4,6 @@ module EnigmaHelpers
     ("a".."z").to_a << " "
   end
 
-
   def get_shifts(key, offset)
     Shift.new(key, offset).merge_subshifts
   end
@@ -14,9 +13,9 @@ module EnigmaHelpers
   end
 
   def template_hash(symbol, key, date)
-    { symbol => "",
-      :key => key,
-      :date => date}
+    {symbol => "",
+     :key => key,
+     :date => date}
   end
 
   def rotate_set(direction = 1, key, offset, index)

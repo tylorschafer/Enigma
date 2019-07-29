@@ -1,15 +1,11 @@
+require './modules/enigma_helpers'
+require './modules/crack_helpers'
 class Crack
+  include EnigmaHelpers
+  include CrackHelpers
 
-  def base_shifts_setup
-
-  end
-
-  def a_base_shift(message)
-
-  end
-
-  def b_base_shift
-
+  def initialize
+    @character_set = generate_character_set
   end
 
 end
