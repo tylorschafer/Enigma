@@ -3,11 +3,22 @@ require_relative 'test_helper'
 class CrackTest < Minitest::Test
 
   def setup
-    @crack = Crack.new
+    @crack = Crack.new("291018")
   end
 
   def test_it_exists
     assert_instance_of Crack, @crack
+  end
+
+  def test_attributes
+    expected = {
+      :a=>6,
+      :b=>3,
+      :c=>2,
+      :d=>4
+    }
+    assert_equal '291018', @crack.date
+    assert_equal expected, @crack.offset_shifts
   end
 
   def test_base_shifts
@@ -36,5 +47,9 @@ class CrackTest < Minitest::Test
       :d=>8
     }
     assert_equal expected, @crack.assign_shifts("vjqtbeaweqihssi")
+  end
+
+  def test_crack_key
+    assert_equal '08304', @crack.crack_key("vjqtbeaweqihssi")
   end
 end
