@@ -78,6 +78,33 @@ class EnigmaTest < Minitest::Test
     assert_equal expected, @enigma.decrypt_hash("02715", "040895")
   end
 
+  def test_rotate_message
+    expected_1 = {
+      :encryption=>"scyzutenmtfqf",
+      :key=>"01324",
+      :date=>"010101"
+    }
+    expected_2 = {
+      :encryption=>"!ab#vkgcbzzc$kfc!",
+      :key=>"53624",
+      :date=>"290619"
+    }
+    expected_3 = {
+      :decryption => "!ro#tate ple$ase!",
+      :key => "53624",
+      :date => "290619"
+    }
+    expected_4 = {
+      :decryption=>"rotate please",
+      :key=>"01324",
+      :date=>"010101"
+    }
+    assert_equal expected_1, @enigma.rotate_message("rotate please", "01324", "010101")
+    assert_equal expected_2, @enigma.rotate_message("!ro#tate ple$ase!", "53624", "290619")
+    assert_equal expected_3, @enigma.rotate_message(-1, "!ab#vkgcbzzc$kfc!", "53624", "290619")
+    assert_equal expected_4, @enigma.rotate_message(-1, "scyzutenmtfqf", "01324", "010101")
+  end
+
   def test_encrypt
     expected = {
       :encryption=>"keder ohulw",
