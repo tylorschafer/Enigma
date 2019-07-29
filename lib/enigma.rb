@@ -9,41 +9,11 @@ class Enigma
     @character_set = generate_character_set
   end
 
-  def encrypt_hash(key, date)
-    {:encryption => "",
-      :key => key,
-      :date => date}
-  end
-
-  def decrypt_hash(key, date)
-    {:decryption => "",
-      :key => key,
-      :date => date}
-  end
-
   def encrypt(message, key = @key, date = @offset)
-    encrypted_output = encrypt_hash(key, date)
-    message.downcase.chomp.chars.each_with_index do |char, index|
-      if @character_set.include?(char)
-        new_char = rotated_set(key, date, index)[find_index(char)]
-        encrypted_output[:encryption] << new_char
-      else
-        encrypted_output[:encryption] << char
-      end
-    end
-    encrypted_output
+    rotate_message(:encryption, message, key, date)
   end
 
   def decrypt(message, key = @key, date = @offset)
-    decrypted_output = decrypt_hash(key, date)
-    message.downcase.chars.each_with_index do |char, index|
-      if @character_set.include?(char)
-        new_char = rotated_set(-1, key, date, index)[find_index(char)]
-        decrypted_output[:decryption] << new_char
-      else
-        decrypted_output[:decryption] << char
-      end
-    end
-    decrypted_output
+    rotate_message(-1, :decryption, message, key, date)
   end
 end
