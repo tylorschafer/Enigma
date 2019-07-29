@@ -9,23 +9,11 @@ class Enigma
     @character_set = generate_character_set
   end
 
-  def encrypt_hash(key, date)
-    {:encryption => "",
-      :key => key,
-      :date => date}
-  end
-
-  def decrypt_hash(key, date)
-    {:decryption => "",
-      :key => key,
-      :date => date}
-  end
-
   def encrypt(message, key = @key, date = @offset)
-    rotate_message(message, key, date)
+    rotate_message(:encryption, message, key, date)
   end
 
   def decrypt(message, key = @key, date = @offset)
-    rotate_message(-1, message, key, date)
+    rotate_message(-1, :decryption, message, key, date)
   end
 end
