@@ -4,6 +4,7 @@ class EnigmaTest < Minitest::Test
 
   def setup
     @enigma = Enigma.new
+    @offset = Offset.new
   end
 
   def test_it_exists
@@ -133,11 +134,11 @@ class EnigmaTest < Minitest::Test
   end
 
   def test_crack
-    expected = {
+    expected_1 = {
     decryption: "hello world end",
     date: "291018",
     key: "08304"
   }
-  assert_equal expected, @enigma.crack("vjqtbeaweqihssi", "291018")
+  assert_equal expected_1, @enigma.crack("vjqtbeaweqihssi", "291018")
   end
 end
