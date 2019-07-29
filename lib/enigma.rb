@@ -18,7 +18,7 @@ class Enigma
   end
 
   def crack(message, date = @offset)
-    cracker = Crack.new(date)
+    cracker = Cracker.new(date)
     rotate_message(-1, :decryption, message, cracker.crack_key(message), date)
   end
 end

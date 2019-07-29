@@ -24,9 +24,9 @@ module CrackHelpers
     def assign_shifts(message)
       assigned_shifts = Hash.new(0)
       reformat_base_shifts(message).each do |num, shift|
-        assigned_shifts[:a] += shift if message.length % 4 + num.to_i == 0 || message.length % 4 + num.to_i == -4
-        assigned_shifts[:b] += shift if message.length % 4 + num.to_i == 1 || message.length % 4 + num.to_i == -3
-        assigned_shifts[:c] += shift if message.length % 4 + num.to_i == 2 || message.length % 4 + num.to_i == -2
+        assigned_shifts[:a] += shift if message.length % 4 + num.to_i == (0 || -4)
+        assigned_shifts[:b] += shift if message.length % 4 + num.to_i == (1 || -3)
+        assigned_shifts[:c] += shift if message.length % 4 + num.to_i == (2 || -2)
         assigned_shifts[:d] += shift if message.length % 4 + num.to_i == -1
       end
       assigned_shifts.sort.to_h

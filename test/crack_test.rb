@@ -1,13 +1,13 @@
 require_relative 'test_helper'
 
-class CrackTest < Minitest::Test
+class CrackerTest < Minitest::Test
 
   def setup
-    @crack = Crack.new("291018")
+    @crack = Cracker.new("291018")
   end
 
   def test_it_exists
-    assert_instance_of Crack, @crack
+    assert_instance_of Cracker, @crack
   end
 
   def test_attributes
