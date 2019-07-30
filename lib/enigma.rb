@@ -1,6 +1,6 @@
-require './modules/enigma_helpers'
+require './modules/rotate'
 class Enigma
-  include EnigmaHelpers
+  include Rotate
   attr_reader :character_set
 
   def initialize

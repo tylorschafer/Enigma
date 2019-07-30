@@ -1,4 +1,4 @@
-module CrackHelpers
+module ShiftFinder
 
   def base_shifts(message)
     base_shifts = {}

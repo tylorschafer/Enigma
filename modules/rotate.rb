@@ -1,4 +1,4 @@
-module EnigmaHelpers
+module Rotate
 
   def generate_character_set
     ("a".."z").to_a << " "
