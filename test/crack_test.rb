@@ -4,21 +4,11 @@ class CrackerTest < Minitest::Test
 
   def setup
     @crack = Cracker.new("291018")
+    @current_crack = Cracker.new("072919")
   end
 
   def test_it_exists
     assert_instance_of Cracker, @crack
-  end
-
-  def test_attributes
-    expected = {
-      :a=>6,
-      :b=>3,
-      :c=>2,
-      :d=>4
-    }
-    assert_equal '291018', @crack.date
-    assert_equal expected, @crack.offset_shifts
   end
 
   def test_base_shifts
@@ -51,5 +41,8 @@ class CrackerTest < Minitest::Test
 
   def test_crack_key
     assert_equal '08304', @crack.crack_key("vjqtbeaweqihssi")
+    assert_equal '19899', @current_crack.crack_key("d gksoeqswndgiuxjvbfxvsfw")
+    assert_equal '19346', @current_crack.crack_key("sv x")
+    assert_equal '38831', @current_crack.crack_key("bshjyp")
   end
 end

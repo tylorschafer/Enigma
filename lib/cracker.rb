@@ -4,8 +4,6 @@ class Cracker
   include EnigmaHelpers
   include CrackHelpers
 
-  attr_reader :offset_shifts, :date
-
   def initialize(date = Offset.new.get_date)
     @date = date.to_s
     @offset_shifts = Offset.new(date).create_offset_subshifts
