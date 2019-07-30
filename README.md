@@ -10,7 +10,8 @@
   - Being I have two methods over 7 lines long and have no class methods, I think a 3 is an appropriate score for OOP.
   
 ## TDD: 4 
-  - Every method and helper method is fully tested in my project, and all of the tests names clearly communicate their purpose.
+  - Every method and helper method is fully tested in my project, and all of the tests names clearly communicate their        purpose.
+  - Tests were always written before their corresponding methods.
   - I had to use a mock object and stub output in the offset class tests to test the square date and assign_subshifts methods.
   - Simplecov showing fully 100% coverage.
   
