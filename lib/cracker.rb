@@ -1,8 +1,8 @@
-require './modules/enigma_helpers'
-require './modules/crack_helpers'
+require './modules/shift_finder'
+require './modules/rotate'
 class Cracker
-  include EnigmaHelpers
-  include CrackHelpers
+  include Rotate
+  include ShiftFinder
 
   def initialize(date = Offset.new.get_date)
     @date = date.to_s
