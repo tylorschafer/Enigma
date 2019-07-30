@@ -15,9 +15,7 @@
   - I had to use a mock object and stub output in the offset class tests to test the square date and assign_subshifts methods.
   - Simplecov showing fully 100% coverage.
   
-## Version Control: 3.5:
+## Version Control: 3.5
   - I have well over 40 commits and 15 pull requests. 
   - Pull requests and commits all document purpose clearly.
   - Had one or two commits that had a bit too much functionality, particularly when making several helper methods. 
-  - On the fence on this one, may be a 4 but should have kept better tabs on commiting more frequently when working on 
-    functionality that took more than one helper method. 
